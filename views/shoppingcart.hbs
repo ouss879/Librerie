@@ -1,0 +1,99 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">E-COMMERCE CART</h1>
+     </div>
+</section>
+{{#if userCart}}
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">ARTICLE</th>
+                            <th scope="col">DISPONIBLE</th>
+                            <th scope="col" class="text-center">QUANTITE</th>
+                            <th scope="col" class="text-right">PRIX</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         {{#each userCart.selectedProduct as | val index| }}
+                        <tr>
+                            <td ><img style="width: 50px;height: 50px;" src="/images/{{this.name}}.jpg" /> </td>
+                            <td> {{this.name}}</td>
+                            <td>In stock</td>
+                            <td class="text-center">
+                             {{#if (checkQuantity @val.quantity)}}
+                              <a href="#" class="btn disabled" style="margin-right: 30px"><i class="fas fa-minus-square"></i></a>
+                            {{else}}
+                             <a href="/decreaseProduct/{{index}}" class="btn " style="margin-right: 30px"><i class="fas fa-minus-square"></i></a>
+                             {{/if}}
+        
+                             {{val.quantity}}
+                              <a href="/increaseProduct/{{index}}" class="btn" style="margin-left: 30px"><i class="fas fa-plus-square"></i></a>
+                             </td>
+                            <td class="text-right">{{this.price}}.00 €</td>
+                            <td class="text-right"><a href="/deleteProduct/{{index}}"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
+                        </tr>
+                        {{/each}}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total Article</td>
+                            <td class="text-right">{{userCart.totalPrice}}.00 €</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Expédition</td>
+
+                            <td class="text-right"> <strong>Gratuit</strong> </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total a payer</strong></td>
+                            <td class="text-right"><strong>{{userCart.totalPrice}}.00 €</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <a href="/" class="btn btn-block btn-light">Continue Shopping</a>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <a href="/checkout"class="btn btn-lg btn-block btn-success text-uppercase">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{else}}
+
+{{#if hasCart}}
+
+<h1 class="text-center" style="padding-top: 100px;padding-bottom:100px;">votre panier est expiré</h1>
+
+{{else}}
+
+<h1 class="text-center" style="padding-top: 100px ;padding-bottom:100px;">votre panier est vide</h1>
+{{/if}}
+
+{{/if}}
+
+
+
+

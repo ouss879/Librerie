@@ -1,0 +1,58 @@
+<section class="jumbotron text-center" style="background-color: #f8f5f1;">
+    <div class="container">
+        <h1 class="jumbotron-heading">Création de mon espace personnel</h1>
+        <p class="lead text-muted mb-0">Bénéficiez des avantages qui vous sont réservés : lecture gratuite chaque
+            semaine, livres en avant-première, romans dédicacés, sélection de lectures personnalisées, accès au Salon,
+            mes avis,
+            mon carnet de lecture, gestion de mes abonnements et bien d’autres surprises…
+        </p>
+    </div>
+</section>
+
+<div class="signup-form">
+
+    <form action="signup" method="post">
+        <h2>S'inscrire</h2>
+        <p class="hint-text">Créez votre compte. C'est gratuit et ne prend qu'une minute.</p>
+        {{#each massages}}
+        <div class="alert alert-danger shadow" role="alert" style="border-left:#721C24 5px solid; border-radius: 0px">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" style="color:#721C24">&times;</span>
+            </button>
+            <div class="row">
+                <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="m-1 bi bi-exclamation-circle-fill"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                </svg>
+                <p style="font-size:16px" class="mb-0 font-weight-light"><b class="mr-1"></b>{{this}}.</p>
+            </div>
+        </div>
+        {{/each}}
+        <div class="form-group">
+            <div class="row">
+                <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name">
+                </div>
+                <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox" required="required"> J'accepte les <a
+                    href="#">conditions d'utilisation</a> &amp; la <a href="#">politique de confidentialité</a></label>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="_csrf" value="{{token}}" >
+            <button type="submit" class="btn btn-success btn-lg btn-block">Valider votre inscription</button>
+        </div>
+    </form>
+    <div class="text-center">Vous avez déjà un compte? <a href="#" style="color:blue;">S'identifier</a></div>
+</div>

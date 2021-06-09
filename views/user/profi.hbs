@@ -1,0 +1,417 @@
+<section class="jumbotron text-center" style="background-color: #f8f5f1;">
+  <div class="container">
+    <h1 class="jumbotron-heading">La librairie en ligne qui défend les libraires
+      indépendants</h1>
+    <p class="lead text-muted mb-0">Vivez l'expérience lalibrairie.com, qui
+      défend une "économie" locale du livre. Une véritable librairie de quartier
+      mais avec les services des grandes enseignes qui tient dans votre
+      smartphone.
+    </p>
+  </div>
+</section>
+<input type="hidden" value="{{{hasMassagesError}}}" id="hasMassagesError">
+
+<div class="container emp-profile" style="background: #faf3f3;">
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+            alt=""
+            id="image"
+          />
+          <div id="file1" class="file btn btn-lg btn-primary">
+            Change Photo
+            <input type="file" id="file" name="file" />
+
+          </div>
+
+          <div style="margin-top: 10px;" class="d-none" id="actionbutton">
+            <input type="submit" value="Save" class="btn btn-success" />
+            <a href="/users/profi" class="btn btn-danger">Cancel</a>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+            {{{user.firstName}}}
+            {{{user.lastName}}}
+          </h5>
+          <h6>
+            La lecture, une félicité qui se mérite.
+          </h6>
+          <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >À propos</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#profile"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >Mettre à jour</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>Genres littéraire</p>
+          <a href="">Romans d'amour</a><br />
+          <a href="">Romans historiques</a><br />
+          <a href="">Biographies</a>
+
+          <p>Librairie</p>
+          <a href="">Lyon Confluence</a><br />
+          <a href="">Lyon Bellecour</a><br />
+          <a href="">Lyon Part-Dieu</a><br />
+          <a href="">Ecully</a><br />
+          <a href="">Crêches-sur-Saône</a><br />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <div class="row">
+
+              <div class="col-md-6">
+                <label>Nom</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{{user.firstName}}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Prénom</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{{user.lastName}}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{{user.email}}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Téléphone</label>
+              </div>
+              <div class="col-md-6">
+                <p>1{{{user.contact}}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Adresse</label>
+              </div>
+              {{#if user.address}}
+                <div class="col-md-6">
+                  <p>{{{user.address}}}</p>
+                </div>
+              {{else}}
+                <div class="col-md-6">
+                  <p> veuillez mettre à jour vos informations</p>
+                </div>
+              {{/if}}
+
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            {{!-- <form id="formupdate" class="d-none" method="post" action="updateuser" style="margin-top: 30px;">
+            <div style="margin-bottom: 10px;" class="row  ">
+              <div class="col-md-6">
+                <label>Nom</label>
+              </div>
+              <div class="col-md-6 ">
+                <input
+                  style="font-size: small;"
+                  type="text"
+                  class="col-md-8 form-control"
+                  placeholder="Mettre à jour votre Nom"
+                  name="username"
+                />
+                {{! Expert</p> }}
+              </div>
+            </div>
+            <div style="margin-bottom: 10px;" class="row">
+              <div class="col-md-6">
+                <label>Prénom</label>
+              </div>
+              <div class="col-md-6">
+                <input
+                  style="font-size: small;"
+                  type="text"
+                  class="col-md-8"
+                  placeholder="Mettre à jour votre Prénom"
+                  name="username"
+                />
+
+              </div>
+            </div>
+            <div style="margin-bottom: 10px;" class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <input
+                  style="font-size:small; "
+                  type="text"
+                  class="col-md-8"
+                  placeholder="Mettre à jour votre Email"
+                  name="username"
+                />
+              </div>
+            </div>
+            <div style="margin-bottom: 10px;" class="row">
+              <div class="col-md-6">
+                <label>Téléphone</label>
+              </div>
+              <div class="col-md-6">
+                <input
+                  style="font-size: small;"
+                  type="text"
+                  class="col-md-8"
+                  placeholder="Mettre à jour votre Phone"
+                  name="username"
+                />
+              </div>
+            </div>
+            <div style="margin-bottom: 10px;" class="row">
+              <div class="col-md-6">
+                <label>Adresse</label>
+              </div>
+              <div class="col-md-6">
+                <input
+                  style="font-size: small;"
+                  type="text"
+                  class="col-md-8"
+                  placeholder="Mettre à jour votre Adresse"
+                  name="username"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <input
+                  style="margin-bottom: 10px;color:blue;"
+                  type="submit"
+                  class="profile-edit-btn"
+                  name="btnAddMore"
+                  value="Enregistrer"
+                />
+                <input
+                  style="color:blue;"
+                  type="submit"
+                  class="profile-edit-btn"
+                  name="btnAddMore"
+                  value="Annuler"
+                />
+
+                {{! <label>Your Bio</label><br/>
+                                        <p>Your detail description</p> }}
+              </div>
+            </div>
+            </form> --}}
+            {{!-- <div class="col-md-2">
+        <input
+          type="submit"
+          class="profile-edit-btn"
+          name="btnAddMore"
+          value="Edit Profile"
+        />
+      </div> --}}
+            
+            <form
+              id="formupdate"
+              
+              method="post"
+              action="updateuser"
+            >
+             {{#each massages}}
+
+            <div class="alert alert-danger">
+              <p>{{this}}</p>
+            </div>
+
+            {{/each}}
+              <div class="form-group row ">
+                <label
+                  for="lastName"
+                  class="col-sm-2 col-form-label"
+                >Nom</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="lastName"
+                    id="inputEmail3"
+                    placeholder="Nom"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="firstName"
+                  class="col-sm-2 col-form-label"
+                >Prénom</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="firstName"
+                    id="inputPassword3"
+                    placeholder="Prénom"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input
+                    type="Email"
+                    class="form-control"
+                    name="email"
+                    id="inputPassword3"
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label
+                  for="contact"
+                  class="col-sm-2 col-form-label"
+                >Téléphone</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="contact"
+                    id="inputPassword3"
+                    placeholder="Téléphone"
+                  />
+                </div>
+              </div>
+              <div class="form-group row rowhome">
+                <label
+                  for="address"
+                  class="col-sm-2 col-form-label"
+                >Adresse</label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="address"
+                    id="inputPassword3"
+                    placeholder="Adresse"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-10">
+
+                  <input type="hidden" name="_csrf" value="{{token}}" />
+
+                  <button
+                    type="submit"
+                    id="updatedata"
+                    class="btn btn-primary"
+                  >Enregistrer</button>
+
+                  <a href="/users/profi" class="btn btn-primary">Annuler</a>
+
+                </div>
+              </div>
+            </form>
+            
+
+          {{!-- <form id="formupdate" class="d-none" method="post" action="updateuser" style="margin-top: 30px;">
+            {{#each massages}}
+
+            <div class="alert alert-danger">
+              <p>{{this}}</p>
+            </div>
+
+            {{/each}}
+            <div class="form-group">
+              <label for="lastName">Nom</label>
+              <input type="text" class="form-control" placeholder="please enter your user name" name="lastName">
+            </div>
+            <div class="form-group">
+              <label for="firstName">Nom</label>
+              <input type="text" class="form-control" placeholder="please enter your user name" name="firstName">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" placeholder="please enter your Email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="Contact">Contact</label>
+              <input type="text" class="form-control" placeholder="please enter your Contact" name="contact">
+            </div>
+            <div class="form-group">
+              <label for="Adress">Address</label>
+              <input type="text" class="form-control" placeholder="please enter your user adress" name="address">
+            </div>
+            
+
+            <div class="text-center">
+              <input type="hidden" name="_csrf" value="{{token}}">
+              <button type="submit" class="btn btn-success">Save</button>
+              <a href="/users/profi" class="btn btn-danger">Cancel</a>
+            </div>
+          </form> --}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+<script>
+ 
+  document.getElementById('file').onchange = function () { const reader = new
+  FileReader(); reader.onload = function () {
+  document.getElementById('image').src = this.result; }
+  reader.readAsDataURL(this.files[0]); $('#file1').addClass('d-none');
+  $('#actionbutton').removeClass(); }
+  
+  
+ 
+
+</script>
